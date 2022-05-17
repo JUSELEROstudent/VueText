@@ -5,9 +5,7 @@
     </header>
 </template>
 <script>
-export default {
-    name: 'app-header'
-}
+export default {name: 'app-header'}
 </script>
 
 <style scoped>
@@ -19,7 +17,7 @@ header {
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    margin-top: 60px; 
+    margin-top: 60px;
 }
 header .tittle{
         align-self: center;

@@ -1,18 +1,20 @@
 <template>
-  <div id="app">
-    <app-header></app-header>
-    <router-view></router-view>
-    <app-footer></app-footer>
-  </div>
+<div id="app">
+  <app-header></app-header>
+  <router-view></router-view>
+  <app-card></app-card>
+  <app-footer></app-footer>
+</div>
 </template>
 
 <script>
+import AppCard from '@/components/AppCardPerson'
 import AppHeader from '@/components/AppHeader'
 import AppFooter from '@/components/AppFooter'
 
 export default {
   name: 'App',
-  components: {AppHeader, AppFooter}
+  components: {AppFooter, AppHeader, AppCard}
 }
 </script>
 

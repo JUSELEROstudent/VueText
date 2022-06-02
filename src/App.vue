@@ -1,6 +1,7 @@
 <template>
 <div id="app">
   <app-header></app-header>
+  <app-Bar></app-Bar>
   <router-view></router-view>
   <app-card></app-card>
   <app-footer></app-footer>
@@ -11,10 +12,11 @@
 import AppCard from '@/components/AppCardPerson'
 import AppHeader from '@/components/AppHeader'
 import AppFooter from '@/components/AppFooter'
+import AppBar from '@/components/MenuBar'
 
 export default {
   name: 'App',
-  components: {AppFooter, AppHeader, AppCard}
+  components: {AppFooter, AppHeader, AppCard, AppBar}
 }
 </script>
 

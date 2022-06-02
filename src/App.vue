@@ -13,10 +13,11 @@ import AppCard from '@/components/AppCardPerson'
 import AppHeader from '@/components/AppHeader'
 import AppFooter from '@/components/AppFooter'
 import AppBar from '@/components/MenuBar'
+import AppCardBo from '@/components/BoardCard'
 
 export default {
   name: 'App',
-  components: {AppFooter, AppHeader, AppCard, AppBar}
+  components: { AppFooter, AppHeader, AppCard, AppBar, AppCardBo }
 }
 </script>
 

@@ -5,7 +5,9 @@
   <router-view></router-view>
   <app-card></app-card>
   <app-footer></app-footer>
-  <App-Csharp></App-Csharp>
+  <div class="cartscontainer">
+  <App-Csharp v-for="statetemp in apifetch" :key="statetemp.date" :objectperson="statetemp"></App-Csharp>
+  </div>
 </div>
 </template>
 
@@ -19,19 +21,34 @@ import AppCsharp from '@/components/AppApiCsharp'
 
 export default {
   name: 'App',
-  components: { AppFooter, AppHeader, AppCard, AppBar, AppCardBo, AppCsharp }
+  components: { AppFooter, AppHeader, AppCard, AppBar, AppCardBo, AppCsharp },
+  data () {
+    return {
+      apifetch: []
+    }
+  },
+  created () {
+  // Simple GET request using fetch
+    fetch('https://localhost:7085/WeatherForecast')
+      .then(response => response.json())
+      .then((data) => { this.apifetch = data })
+  }
 }
 </script>
 
-<style>
+<style scoped>
 #app {
-  box-sizing: border-box;
   color: #37474f;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
+.cartscontainer {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap ;
+  width: 90%;
+  }
 </style>

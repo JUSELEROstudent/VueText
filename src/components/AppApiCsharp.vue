@@ -1,9 +1,12 @@
 <template>
-  <div>
-    <table>
-      <tr v-for="info in apifetch" :key="info" ><td>{{ info.summary }}</td><td>{{ info.temperatureC }}</td></tr>
-    </table>
-    <span>deve mostrar la informacion de fetch</span>
+  <div class="marco">
+    <div><input v-model="nombre" v-if="edit" ><span v-if="!edit">{{ objectperson.summary }} <button class="btn btn-danger" >eliminar</button></span></div>
+    <div>
+      <input v-model="apellido" v-if="edit" ><button v-if="edit" @click="editar(apellido)">Cancelar</button>
+      <span v-if="!edit">{{objectperson.temperatureC}}
+      <button class="btn btn-warning" @click="editar(objectperson.summary)">editar</button>
+    </span>
+    </div>
   </div>
 </template>
 
@@ -12,14 +15,30 @@ export default {
   name: 'api-test',
   data () {
     return {
-      apifetch: []
+      nombre: null,
+      apellido: null,
+      edit: false
     }
   },
-  created () {
-  // Simple GET request using fetch
-    fetch('https://localhost:7085/WeatherForecast')
-      .then(response => response.json())
-      .then((data) => { this.apifetch = data })
+  props: ['objectperson'],
+  methods: {
+    editar (valor) {
+      this.nombre = valor
+      this.edit = !this.edit
+    }
   }
+
 }
 </script>
+<style scoped>
+.marco {
+  width: 18%;
+  background: white;
+  border-radius: 5px;
+  border: 2px solid gray ;
+  margin: 5px;
+}
+.marco input{
+  max-width: 60px;
+}
+</style>

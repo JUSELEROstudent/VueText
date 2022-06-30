@@ -11,6 +11,7 @@
     {{ persons.id }}------ {{ persons.nombre }}
     </li>
     </ul>
+    <span>se crea el span dentro de la etiqueta div</span>
   </div>
 </template>
 

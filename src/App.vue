@@ -5,6 +5,7 @@
   <router-view></router-view>
   <app-card></app-card>
   <app-footer></app-footer>
+  <App-Csharp></App-Csharp>
 </div>
 </template>
 
@@ -14,10 +15,11 @@ import AppHeader from '@/components/AppHeader'
 import AppFooter from '@/components/AppFooter'
 import AppBar from '@/components/MenuBar'
 import AppCardBo from '@/components/BoardCard'
+import AppCsharp from '@/components/AppApiCsharp'
 
 export default {
   name: 'App',
-  components: { AppFooter, AppHeader, AppCard, AppBar, AppCardBo }
+  components: { AppFooter, AppHeader, AppCard, AppBar, AppCardBo, AppCsharp }
 }
 </script>
 

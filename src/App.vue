@@ -6,7 +6,9 @@
   <app-card></app-card>
   <app-footer></app-footer>
   <div class="cartscontainer">
-  <App-Csharp v-for="statetemp in apifetch" :key="statetemp.date" :objectperson="statetemp"></App-Csharp>
+  <App-Csharp v-for="statetemp in apifetch" :key="statetemp.date" :objectperson="statetemp" @updateup="guardarcambio"></App-Csharp>
+  <br>
+  <form-insert></form-insert>
   </div>
 </div>
 </template>
@@ -18,10 +20,11 @@ import AppFooter from '@/components/AppFooter'
 import AppBar from '@/components/MenuBar'
 import AppCardBo from '@/components/BoardCard'
 import AppCsharp from '@/components/AppApiCsharp'
+import FormInsert from '@/components/FormInsert'
 
 export default {
   name: 'App',
-  components: { AppFooter, AppHeader, AppCard, AppBar, AppCardBo, AppCsharp },
+  components: { AppFooter, AppHeader, AppCard, AppBar, AppCardBo, AppCsharp, FormInsert },
   data () {
     return {
       apifetch: []
@@ -29,9 +32,15 @@ export default {
   },
   created () {
   // Simple GET request using fetch
-    fetch('https://localhost:7085/WeatherForecast')
+    fetch('https://localhost:7253/WeatherForecast')
       .then(response => response.json())
       .then((data) => { this.apifetch = data })
+  },
+  methods: {
+    guardarcambio: function (lastname, nombre) {
+      console.log('llegamos')
+      this.apifetch.summary[nombre] = lastname
+    }
   }
 }
 </script>

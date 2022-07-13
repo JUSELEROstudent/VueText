@@ -1,10 +1,15 @@
 <template>
   <div class="marco">
-    <div><input v-model="nombre" v-if="edit" ><span v-if="!edit">{{ objectperson.summary }} <button class="btn btn-danger" >eliminar</button></span></div>
+    <div>
+      <input v-model="nombre" v-if="edit" ><button v-if="edit" @click="guardar(nombre,apellido)">Guardar</button>
+      <span v-if="!edit" @input="guardar">{{ objectperson.summary }}
+      <button class="btn btn-danger" >eliminar</button>
+    </span>
+    </div>
     <div>
       <input v-model="apellido" v-if="edit" ><button v-if="edit" @click="editar(apellido)">Cancelar</button>
       <span v-if="!edit">{{objectperson.temperatureC}}
-      <button class="btn btn-warning" @click="editar(objectperson.summary)">editar</button>
+      <button class="btn btn-warning" @click="editar(objectperson.summary,objectperson.temperatureC)">editar</button>
     </span>
     </div>
   </div>
@@ -22,9 +27,13 @@ export default {
   },
   props: ['objectperson'],
   methods: {
-    editar (valor) {
-      this.nombre = valor
+    editar (sumario, temperature) {
+      this.nombre = sumario
+      this.apellido = temperature
       this.edit = !this.edit
+    },
+    guardar (lastname, nombre) {
+      this.$emit('updateup', (lastname, nombre))
     }
   }
 

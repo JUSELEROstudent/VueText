@@ -1,11 +1,11 @@
 <template>
 <div>
   <form v-if="testing">
-  <label >inserte</label>
+  <label >Nombre</label>
   <input v-model="KundeName">
-  <label >inserte Email</label>
+  <label >Inserte Email</label>
   <input v-model="KundeEmail">
-  <label >Numer De Celular</label>
+  <label >Inserte Edad</label>
   <input v-model="KundeCel">
   <label >Elija un ROl</label>
   <input v-model="KundeRol" type="text">
@@ -34,12 +34,13 @@ export default {
     },
     postdata: function () {
       var data = {
-        'KundeNmae': this.KundeNmae,
-        'KUndeEmail': this.KundeEmail,
-        'KundeTel': this.KundeCel,
-        'KundeRole': this.KundeRol
+        'Name': this.KundeName,
+        'Email': this.KundeEmail,
+        'Age': this.KundeCel,
+        'Role': this.KundeRol
       }
-      fetch('http://localhost:7253/api/apidapper', {
+      console.log(data)
+      fetch('https://localhost:7253/api/apidapper', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

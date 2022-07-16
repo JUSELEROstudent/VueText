@@ -1,15 +1,6 @@
 <template>
 <div id="app">
-  <app-header></app-header>
-  <app-Bar></app-Bar>
   <router-view></router-view>
-  <app-card></app-card>
-  <app-footer></app-footer>
-  <div class="cartscontainer">
-  <App-Csharp v-for="statetemp in apifetch" :key="statetemp.date" :objectperson="statetemp" @updateup="guardarcambio"></App-Csharp>
-  <br>
-  <form-insert></form-insert>
-  </div>
 </div>
 </template>
 

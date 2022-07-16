@@ -7,8 +7,8 @@
   <input v-model="KundeEmail">
   <label >Inserte Edad</label>
   <input v-model="KundeCel">
-  <label >Elija un ROl</label>
-  <input v-model="KundeRol" type="text">
+  <label >Password</label>
+  <input v-model="KundePassword" type="text">
   </form>
   <button v-if="testing" v-on:click="changemode">cancelar</button>
   <button class="btn btn-success" v-if="testing" v-on:click="postdata">Guardar</button>
@@ -25,19 +25,23 @@ export default {
       KundeName: null,
       KundeEmail: null,
       KundeCel: null,
-      KundeRol: null
+      KundePassword: null
     }
   },
   methods: {
     changemode: function () {
       this.testing = !this.testing
+      this.KundeName = null
+      this.KundeEmail = null
+      this.KundeCel = null
+      this.KundePassword = null
     },
     postdata: function () {
       var data = {
         'Name': this.KundeName,
         'Email': this.KundeEmail,
         'Age': this.KundeCel,
-        'Role': this.KundeRol
+        'Password': this.KundePassword
       }
       console.log(data)
       fetch('https://localhost:7253/api/apidapper', {

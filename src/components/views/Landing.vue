@@ -1,8 +1,8 @@
 <template>
   <div>
     <nav-bar></nav-bar>
-    Bienvenido da click para seguir al login
-    <a href="/login">ACA</a>
+    <li > <a href="/login">ir al login</a></li>
+    <li> <a href="/store">ir al store</a></li>
   </div>
 </template>
 <script>

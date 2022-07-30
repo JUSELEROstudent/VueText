@@ -5,16 +5,22 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     msg: null,
-    estado: null
+    estado: []
   },
   mutations: {
-    EDITARMSJ (statu, cambiotext) {
+    EDITARMSJ (state, cambiotext) {
       this.state.msg = cambiotext
+    },
+    AGREGARLISTA (state, nuevoval) {
+      this.state.estado.push(nuevoval)
     }
   },
   actions: {
     changemsj (context, cambiotext) {
       context.commit('EDITARMSJ', cambiotext)
+    },
+    agregarnuevo (context, nuevoval) {
+      context.commit('AGREGARLISTA', nuevoval)
     }
   },
   getters: {

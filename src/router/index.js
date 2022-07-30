@@ -4,6 +4,7 @@ import Landing from '@/components/views/Home'
 import Login from '@/components/views/Login'
 import Home from '@/components/views/Landing'
 import Store from '@/components/views/StoreTest'
+import Userlogin from '@/components/views/Userlogin'
 
 Vue.use(Router)
 
@@ -12,6 +13,10 @@ export default new Router({
   routes: [
     {
       path: '/',
+      component: Userlogin
+    },
+    {
+      path: '/homeopcional',
       component: Home
     },
     {

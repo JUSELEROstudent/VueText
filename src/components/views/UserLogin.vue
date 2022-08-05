@@ -21,13 +21,16 @@ export default {
   },
   methods: {
     veryfylogin: function () {
-      var logindata = {user: this.user, password: this.password}
-      fetch('https://localhost:7253/api/login', {
-        mode: 'no-cors',
+      var logindata = {'User': this.user, 'Password': this.password}
+      fetch('https://localhost:7253/api/Innerlogin', {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        data: JSON.stringify(logindata)
-      })
+        mode: 'cors', // no-cors,
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(logindata)
+      }).then(response => response.json())
+        .then(data => console.log(data))
     }
   }
 }
@@ -35,6 +38,7 @@ export default {
 <style scoped>
 div {
   width: 60%;
+  max-width: 300px;
   height: auto;
   margin: auto;
   background: rgb(198, 202, 176);
@@ -48,10 +52,10 @@ form {
   border: rgb(52, 54, 52);
   border-radius: 8px;
   color: white;
-  width: 80%;
+  width: auto;
   margin: auto;
   padding: 20px;
-  display: block;
+  display: grid;
 }
 button {
   display: block;

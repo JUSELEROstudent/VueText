@@ -21,16 +21,25 @@ export default {
   },
   methods: {
     veryfylogin: function () {
-      var logindata = {'User': this.user, 'Password': this.password}
-      fetch('https://localhost:7253/api/Innerlogin', {
+      // var logindata = {'User': this.user, 'Password': this.password}
+      var myHeaders = new Headers()
+      myHeaders.append('Content-Type', 'application/json')
+
+      var raw = JSON.stringify({
+        'user': this.user,
+        'password': this.password
+      })
+
+      var requestOptions = {
         method: 'POST',
-        mode: 'cors', // no-cors,
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(logindata)
-      }).then(response => response.json())
+        headers: myHeaders,
+        body: raw
+      }
+
+      fetch('https://localhost:7253/api/innerlogin', requestOptions)
+        .then(response => response.text())
         .then(data => console.log(data))
+        .catch(error => console.log('error camniar el errror', error))
     }
   }
 }

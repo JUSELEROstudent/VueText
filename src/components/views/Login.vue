@@ -35,6 +35,7 @@ export default {
       }
       fetch('https://localhost:7253/api/Login', {
         method: 'POST',
+        redirect: 'store',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -43,6 +44,9 @@ export default {
       })
         .then(response => response.json())
         .then(data => console.log(data))
+        .catch(function (err) {
+          console.log(err)
+        })
     }
   }
 }

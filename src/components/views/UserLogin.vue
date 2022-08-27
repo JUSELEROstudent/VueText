@@ -3,9 +3,9 @@
     <h1>Titulo de login</h1>
     <form>
       <label> Usuario o contrasena</label>
-      <input type="text" v-model="user">
+      <input type="text" v-model="user" />
       <label > inserte la conrasena</label>
-      <input type="password" v-model="password">
+      <input type="password" v-model="password" />
       <button @click="veryfylogin">enviar</button>
     </form>
   </div>
@@ -20,11 +20,10 @@ export default {
     }
   },
   methods: {
-    veryfylogin: function () {
+    async veryfylogin () {
       // var logindata = {'User': this.user, 'Password': this.password}
       var myHeaders = new Headers()
       myHeaders.append('Content-Type', 'application/json')
-
       var raw = JSON.stringify({
         'user': this.user,
         'password': this.password
@@ -35,15 +34,20 @@ export default {
         headers: myHeaders,
         body: raw
       }
-
-      fetch('https://localhost:7253/api/innerlogin', requestOptions)
-        .then(response => response.text())
-        .then(data => console.log(data))
-        .catch(error => console.log('error camniar el errror', error))
+      var response = await fetch('https://localhost:7253/api/innerlogin', requestOptions)
+      var data = await response.text()
+      if (response.ok) {
+        localStorage.setItem('stringjwt', data)
+        console.log(data + 'ahora se hace DIFERENTE LA PETICION')
+        window.location.href = 'http://localhost:8080/profile'
+      } else {
+        console.log('ocurrio un error haciendo la peticion')
+      }
     }
   }
 }
 </script>
+
 <style scoped>
 div {
   width: 60%;

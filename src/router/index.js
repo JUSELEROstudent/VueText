@@ -5,6 +5,7 @@ import Login from '@/components/views/Login'
 import Home from '@/components/views/Landing'
 import Store from '@/components/views/StoreTest'
 import Userlogin from '@/components/views/Userlogin'
+import Profile from '@//components/views/Profile'
 
 Vue.use(Router)
 
@@ -30,6 +31,10 @@ export default new Router({
     {
       path: '/store',
       component: Store
+    },
+    {
+      path: '/profile',
+      component: Profile
     }
   ]
 })

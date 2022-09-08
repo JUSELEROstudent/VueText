@@ -21,7 +21,6 @@ export default {
   },
   methods: {
     async veryfylogin () {
-      // var logindata = {'User': this.user, 'Password': this.password}
       var myHeaders = new Headers()
       myHeaders.append('Content-Type', 'application/json')
       var raw = JSON.stringify({

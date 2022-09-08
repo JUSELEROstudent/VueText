@@ -21,12 +21,12 @@ export default {
       apifetch: []
     }
   },
-  created () {
+  /* created () {
   // Simple GET request using fetch
     fetch('https://localhost:7253/WeatherForecast')
       .then(response => response.json())
       .then((data) => { this.apifetch = data })
-  },
+  }, */
   methods: {
     guardarcambio: function (lastname, nombre) {
       console.log('llegamos')

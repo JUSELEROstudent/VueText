@@ -1,20 +1,27 @@
 <template>
-  <div>
-    <p>se debe mostrar los datos importantes del usuario logueado.</p>
-    <ul>
-      <li>{{name}}</li>
-      <li>{{email}}</li>
-      <li>{{age}}</li>
-      <li>{{id}}</li>
-
-    </ul>
+  <div >
+    <div class="row">
+      <div class="col-5">
+        <div class="card bg-tres">
+          <h3 class="card-header">{{name}}</h3>
+          <div class="card-body bg-cinco">
+            <div class="card-text"> Email: {{email}}</div>
+            <div class="card-text"> Edad: {{age}}</div>
+            <div class="card-text">Identificacion: {{id}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <chat-body class="col-5"></chat-body>
   </div>
 </template>
 
 <script>
+import ChatBody from '@/components/components/Chat'
 
 export default ({
   name: 'profile',
+  components: {ChatBody},
   data () {
     return {
       Userclass: [],
@@ -51,3 +58,12 @@ export default ({
 
 })
 </script>
+
+<style scoped>
+.card .card-header {
+  color: var(--bg-cinco);
+}
+.card-body{
+  display: inline-block;
+}
+</style>
